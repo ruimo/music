@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} - Virtual Virtuoso{% endblock title %}
+
+{% block description %}{{ page.summary | default(value="") }}{% endblock description %}
+
+{% block content %}
+<article class="post-detail">
+    <div class="container">
+        <header class="post-header">
+            <h1 class="post-title">
+                {{ page.title }}
+                {% if page.taxonomies.tags %}
+                <span class="post-tags-inline">
+                    {% for tag in page.taxonomies.tags %}
+                    <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="post-tag-inline">{{ tag }}</a>
+                    {% endfor %}
+                </span>
+                {% endif %}
+            </h1>
+            <time class="post-date" datetime="{{ page.date }}">
+                {{ page.date | date(format="%B %d, %Y") }}
+            </time>
+            
+            <div class="post-meta">
+                {% if page.extra.artist %}
+                <div class="meta-item">
+                    <span class="meta-label">🎤 Artist</span>
+                    <span class="meta-value">{{ page.extra.artist }}</span>
+                </div>
+                {% endif %}
+                
+                {% if page.extra.genre %}
+                <div class="meta-item">
+                    <span class="meta-label">🎸 Genre</span>
+                    <span class="meta-value">{{ page.extra.genre }}</span>
+                </div>
+                {% endif %}
+                
+                {% if page.extra.year %}
+                <div class="meta-item">
+                    <span class="meta-label">📅 Release Year</span>
+                    <span class="meta-value">{{ page.extra.year }}</span>
+                </div>
+                {% endif %}
+            </div>
+        </header>
+
+        {% if page.extra.spotify_embed %}
+        <div class="spotify-embed">
+            <iframe style="border-radius:12px" src="{{ page.extra.spotify_embed }}" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        {% endif %}
+
+        {% if page.extra.youtube_embed %}
+        <div class="youtube-embed">
+            <iframe width="100%" height="480" src="{{ page.extra.youtube_embed }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        {% elif page.extra.cover_image %}
+        <div class="post-cover">
+            <img src="{{ page.extra.cover_image }}" alt="{{ page.title }}">
+        </div>
+        {% endif %}
+
+        <div class="post-content">
+            {{ page.content | safe }}
+        </div>
+
+        <footer class="post-footer">
+            <nav class="post-navigation">
+                {% set section = get_section(path="_index.md") %}
+                {% set current_index = -1 %}
+                {% for p in section.pages %}
+                    {% if p.permalink == page.permalink %}
+                        {% set_global current_index = loop.index0 %}
+                    {% endif %}
+                {% endfor %}
+                
+                {% if current_index > 0 %}
+                    {% set prev_page = section.pages | nth(n=current_index - 1) %}
+                    <a href="{{ prev_page.permalink }}" class="nav-link nav-prev">
+                        <span class="nav-label">← Previous</span>
+                        <span class="nav-title">{{ prev_page.title }}</span>
+                    </a>
+                {% else %}
+                    <span class="nav-link nav-disabled"></span>
+                {% endif %}
+                
+                <a href="{{ get_url(path='/') }}" class="back-link">Home</a>
+                
+                {% set total_pages = section.pages | length %}
+                {% if current_index >= 0 and current_index < total_pages - 1 %}
+                    {% set next_page = section.pages | nth(n=current_index + 1) %}
+                    <a href="{{ next_page.permalink }}" class="nav-link nav-next">
+                        <span class="nav-label">Next →</span>
+                        <span class="nav-title">{{ next_page.title }}</span>
+                    </a>
+                {% else %}
+                    <span class="nav-link nav-disabled"></span>
+                {% endif %}
+            </nav>
+        </footer>
+    </div>
+</article>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Tags - Virtual Virtuoso{% endblock title %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1 class="hero-title">Tags</h1>
+        <p class="hero-subtitle">Browse music by tags</p>
+    </div>
+</div>
+
+<section class="tags-section">
+    <div class="container">
+        <div class="tags-list">
+            {% for term in terms %}
+            <a href="{{ term.permalink }}" class="tag-item">
+                <span class="tag-name">{{ term.name }}</span>
+                <span class="tag-count">{{ term.pages | length }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

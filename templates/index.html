@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Shisei Hanai - Discover Piano Music{% endblock title %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <img src="{{ get_url(path='logo.png') }}" alt="Virtual Virtuoso Logo" class="hero-logo">
+        </div>
+        <h1 class="hero-title">Rubato in milliseconds, the breath of a single note. A virtual concert crafted with precious piano engines.</h1>
+    </div>
+</div>
+
+<section class="posts-section">
+    <div class="container">
+        <div class="posts-grid">
+            {% set section = get_section(path="_index.md") %}
+            {% for page in section.pages %}
+            <article class="post-card">
+                {% if page.extra.cover_image %}
+                <a href="{{ page.permalink }}" class="post-card-image">
+                    <img src="{{ page.extra.cover_image }}" alt="{{ page.title }}">
+                </a>
+                {% endif %}
+                <div class="post-card-content">
+                    <h2 class="post-card-title">
+                        <a href="{{ page.permalink }}">{{ page.title }}</a>
+                    </h2>
+                    <time class="post-date" datetime="{{ page.date }}">
+                        {{ page.date | date(format="%B %d, %Y") }}
+                    </time>
+                    {% if page.extra.artist %}
+                    <p class="post-artist">🎤 {{ page.extra.artist }}</p>
+                    {% endif %}
+                    {% if page.extra.genre %}
+                    <span class="post-genre">{{ page.extra.genre }}</span>
+                    {% endif %}
+                    {% if page.taxonomies.tags %}
+                    <div class="post-tags">
+                        {% for tag in page.taxonomies.tags %}
+                        <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="post-tag">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% if page.summary %}
+                    <p class="post-summary">{{ page.summary }}</p>
+                    {% endif %}
+                    <a href="{{ page.permalink }}" class="read-more">Read More →</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

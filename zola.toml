@@ -1,0 +1,23 @@
+# The URL the site will be built for
+base_url = "https://music.ruimo.com"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+# Generate Atom feeds for the site
+generate_feeds = true
+
+taxonomies = [
+    { name = "tags", feed = true },  # "tags" という名前のタクソノミーを有効にする
+]
+
+[markdown]
+
+[markdown.highlighting]
+theme = "catppuccin-mocha"
+
+[extra]
+# Put all your custom variables here
