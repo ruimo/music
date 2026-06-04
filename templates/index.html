@@ -19,9 +19,9 @@
             {% for page in section.pages %}
             <article class="post-card">
                 {% if page.extra.cover_image %}
-                <a href="{{ page.permalink }}" class="post-card-image">
+                <div class="post-card-image">
                     <img src="{{ page.extra.cover_image }}" alt="{{ page.title }}">
-                </a>
+                </div>
                 {% endif %}
                 <div class="post-card-content">
                     <h2 class="post-card-title">
@@ -46,7 +46,6 @@
                     {% if page.summary %}
                     <p class="post-summary">{{ page.summary }}</p>
                     {% endif %}
-                    <a href="{{ page.permalink }}" class="read-more">Read More →</a>
                 </div>
             </article>
             {% endfor %}
