@@ -19,17 +19,14 @@
             {% for page in section.pages %}
             <article class="post-card">
                 {% if page.extra.cover_image %}
-                <div class="post-card-image">
+                <a href="{{ page.permalink }}" class="post-card-image">
                     <img src="{{ page.extra.cover_image }}" alt="{{ page.title }}">
-                </div>
+                </a>
                 {% endif %}
                 <div class="post-card-content">
                     <h2 class="post-card-title">
                         <a href="{{ page.permalink }}">{{ page.title }}</a>
                     </h2>
-                    <time class="post-date" datetime="{{ page.date }}">
-                        {{ page.date | date(format="%B %d, %Y") }}
-                    </time>
                     {% if page.extra.artist %}
                     <p class="post-artist">🎤 {{ page.extra.artist }}</p>
                     {% endif %}
@@ -43,6 +40,9 @@
                         {% endfor %}
                     </div>
                     {% endif %}
+                    <time class="post-date" datetime="{{ page.date }}">
+                        {{ page.date | date(format="%B %d, %Y") }}
+                    </time>
                     {% if page.summary %}
                     <p class="post-summary">{{ page.summary }}</p>
                     {% endif %}
