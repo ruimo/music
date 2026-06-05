@@ -14,6 +14,11 @@ taxonomies = [
     { name = "tags", feed = true },  # "tags" という名前のタクソノミーを有効にする
 ]
 
+# Slugify settings
+[slugify]
+paths = "on"
+paths_keep_dates = true
+
 [markdown]
 
 [markdown.highlighting]
