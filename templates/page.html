@@ -14,13 +14,12 @@
 <meta property="og:image" content="{{ page.extra.cover_image | safe }}">
 {% endif %}
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="{{ page.permalink | safe }}">
-<meta property="twitter:title" content="{{ page.title }}">
-<meta property="twitter:description" content="{{ page.summary | default(value='Discover new music every day') }}">
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.summary | default(value='Discover new music every day') }}">
 {% if page.extra.cover_image %}
-<meta property="twitter:image" content="{{ page.extra.cover_image | safe }}">
+<meta name="twitter:image" content="{{ page.extra.cover_image | safe }}">
 {% endif %}
 {% endblock extra_head %}
 
