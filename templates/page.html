@@ -4,6 +4,26 @@
 
 {% block description %}{{ page.summary | default(value="") }}{% endblock description %}
 
+{% block extra_head %}
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ page.permalink | safe }}">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.summary | default(value='Discover new music every day') }}">
+{% if page.extra.cover_image %}
+<meta property="og:image" content="{{ page.extra.cover_image | safe }}">
+{% endif %}
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ page.permalink | safe }}">
+<meta property="twitter:title" content="{{ page.title }}">
+<meta property="twitter:description" content="{{ page.summary | default(value='Discover new music every day') }}">
+{% if page.extra.cover_image %}
+<meta property="twitter:image" content="{{ page.extra.cover_image | safe }}">
+{% endif %}
+{% endblock extra_head %}
+
 {% block content %}
 <article class="post-detail">
     <div class="container">
