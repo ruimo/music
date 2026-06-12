@@ -67,6 +67,17 @@ html[data-theme="dark"] {
         }
     }
 
+    .kofi-sidebar {
+        background: $dark-bg-secondary;
+        box-shadow: $dark-shadow-lg;
+        border: 1px solid $dark-border-color;
+
+        iframe {
+            filter: brightness(0.9) contrast(0.95);
+            opacity: 0.95;
+        }
+    }
+
     .logo,
     .nav-menu a {
         color: $dark-text-light;
@@ -252,6 +263,24 @@ html[data-theme="dark"] {
     
     iframe {
         overflow: hidden;
+    }
+}
+
+// Ko-fi Sidebar
+.kofi-sidebar {
+    width: 350px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 80px; // Below header
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: $shadow-lg;
+    background: white;
+    
+    iframe {
+        overflow: hidden;
+        border-radius: 12px;
     }
 }
 
@@ -804,7 +833,8 @@ html[data-theme="dark"] {
 
 // Responsive
 @media (max-width: 1200px) {
-    .bmc-sidebar {
+    .bmc-sidebar,
+    .kofi-sidebar {
         display: none; // Hide sidebar on smaller screens
     }
 

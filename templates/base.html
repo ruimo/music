@@ -64,9 +64,6 @@
                         </div>
                     </div>
                     {% endif %}
-                    <a href="https://www.buymeacoffee.com/shiseihanai" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;border-radius: 8px;">
-                    </a>
                     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
                         <span class="theme-toggle-icon">🌙</span>
                     </button>
@@ -80,7 +77,9 @@
             {% block content %}{% endblock content %}
         </main>
         
-        
+        <aside class="kofi-sidebar">
+            <iframe id='kofiframe' src='https://ko-fi.com/shiseihanai/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='shiseihanai'></iframe>
+        </aside>
     </div>
 
     <footer class="site-footer">
