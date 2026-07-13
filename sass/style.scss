@@ -1432,3 +1432,64 @@ html[data-theme="dark"] {
         align-items: center;
     }
 }
+
+// Pagination
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid $border-color;
+
+    @media (prefers-color-scheme: dark) {
+        border-top-color: $dark-border-color;
+    }
+}
+
+.pagination-btn {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    background: $primary-color;
+    color: #fff;
+
+    &:hover {
+        background: darken($primary-color, 10%);
+        color: #fff;
+    }
+
+    &.disabled {
+        background: $border-color;
+        color: $text-light;
+        cursor: default;
+        pointer-events: none;
+
+        @media (prefers-color-scheme: dark) {
+            background: $dark-border-color;
+            color: $dark-text-muted;
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        background: $dark-primary-color;
+
+        &:hover {
+            background: lighten($dark-primary-color, 10%);
+        }
+    }
+}
+
+.pagination-info {
+    font-size: 0.9rem;
+    color: $text-light;
+
+    @media (prefers-color-scheme: dark) {
+        color: $dark-text-muted;
+    }
+}

@@ -15,8 +15,7 @@
 <section class="posts-section">
     <div class="container">
         <div class="posts-grid">
-            {% set section = get_section(path="_index.md") %}
-            {% for page in section.pages %}
+            {% for page in paginator.pages %}
             <article class="post-card">
                 {% if page.extra.cover_image %}
                 <a href="{{ page.permalink }}" class="post-card-image">
@@ -50,6 +49,24 @@
             </article>
             {% endfor %}
         </div>
+
+        {% if paginator.number_pagers > 1 %}
+        <nav class="pagination">
+            {% if paginator.previous %}
+            <a href="{{ paginator.previous }}" class="pagination-btn pagination-prev">← Newer</a>
+            {% else %}
+            <span class="pagination-btn pagination-prev disabled">← Newer</span>
+            {% endif %}
+
+            <span class="pagination-info">{{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
+
+            {% if paginator.next %}
+            <a href="{{ paginator.next }}" class="pagination-btn pagination-next">Older →</a>
+            {% else %}
+            <span class="pagination-btn pagination-next disabled">Older →</span>
+            {% endif %}
+        </nav>
+        {% endif %}
     </div>
 </section>
 {% endblock content %}
