@@ -39,7 +39,6 @@ body {
     color: $text-dark;
     background-color: $bg-light;
     line-height: 1.6;
-    font-size: 16px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -76,6 +75,11 @@ html[data-theme="dark"] {
             filter: brightness(0.9) contrast(0.95);
             opacity: 0.95;
         }
+    }
+
+    .high-res-title {
+        color: $dark-text-light;
+        border-bottom-color: $dark-border-color;
     }
 
     .logo,
@@ -239,7 +243,8 @@ html[data-theme="dark"] {
     gap: 2rem;
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 10px;
 }
 
 .main-content {
@@ -270,6 +275,8 @@ html[data-theme="dark"] {
 .kofi-sidebar {
     width: 350px;
     max-width: 100%;
+    margin-top: 3px;
+    margin-bottom: 3px;
     flex-shrink: 0;
     border-radius: 12px;
     box-shadow: $shadow-lg;
@@ -279,6 +286,28 @@ html[data-theme="dark"] {
         width: 100% !important;
         overflow: hidden;
         border-radius: 12px;
+    }
+}
+
+.high-res-title {
+    position: relative;
+    margin: 0 1rem 1rem;
+    padding: 1rem 0 0.75rem;
+    border-bottom: 1px solid $border-color;
+    color: $text-dark;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    line-height: 1.3;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 3rem;
+        height: 3px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, $primary-color, $secondary-color);
     }
 }
 
